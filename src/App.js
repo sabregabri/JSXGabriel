@@ -1,8 +1,14 @@
 import {PaperProvider, Text} from "react-native-paper";
 
+const estils = {
+  text:{
+  color: 'red',
+  fontSize: 25,
+  }
+}
 const nom = (textAMostrar)=>{
   return(
-    <Text variant="displayMedium">{textAMostrar}</Text>
+    <Text style={estils.text}>{textAMostrar}</Text>
   );
 }
 const App = () => {
