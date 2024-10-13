@@ -1,12 +1,28 @@
 import React, { useState} from 'react';
 import { StyleSheet } from 'react-native';
-import { PaperProvider, Text, TextInput } from 'react-native-paper';
+import { PaperProvider, Text, TextInput, Button } from 'react-native-paper';
 
 const estils = {
   text: {
     color: 'red',
     fontSize: 25,
   },
+};
+
+const isAdmin = true; //Administrador
+
+const AdminButton = () => { //Boto Admin
+  return (
+    <Button
+      icon="format-list-bulleted"
+      buttonColor='lime'
+      onPress={() => {
+      }}
+      style={styles.button}
+    >
+      <Text style={styles.buttonText}>INFORMES</Text>
+    </Button>
+  );
 };
 
 
@@ -44,6 +60,7 @@ const App = () => {
     <PaperProvider>
       {nom("Gabriel Carmona")}
       {dades(fields, estilSeleccionat(estil),colorSeleccionat(estil))}
+      {isAdmin && AdminButton()}
     </PaperProvider>
   );
 };
@@ -65,6 +82,13 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingRight: 12,
     textAlign: 'right',
+    },
+    button: {
+      alignItems: 'center',
+      padding: 10,
+    },
+    buttonText: {
+      marginLeft: 15,
     },
 });
 
