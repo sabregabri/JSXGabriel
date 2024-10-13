@@ -9,12 +9,15 @@ const estils = {
   },
 };
 
-const dades = (fieldsArray) => {
+
+const dades = (fieldsArray, estil) => {
+
   return (
     fieldsArray.map((field, index) => (
       <TextInput
         key={index}
         label={field}
+        style={estil}
         value=""
         onChangeText={() => {}}
       />
@@ -28,17 +31,22 @@ const nom = (textAMostrar) => {
   );
 };
 
+//App Principal
 const App = () => {
   const fields = ['Email', 'Nom'];
+
+  const [estil, setEstil] = useState('florida');
+  const estilSeleccionat = estil === 'florida' ? styles.florida : styles.upv;
 
   return (
     <PaperProvider>
       {nom("Gabriel Carmona")}
-      {dades(fields)}
+      {dades(fields, estilSeleccionat)}
     </PaperProvider>
   );
 };
 
+//Estils
 const styles = StyleSheet.create({
   upv:{
     backgroundColor: 'purple',
