@@ -32,18 +32,18 @@ const nom = (textAMostrar) => {
   );
 };
 
+const estilSeleccionat = (estil) => {return estil === 'florida' ? styles.florida : styles.upv};
+const colorSeleccionat = (estil) => {return estil === 'florida' ? '#FFFFFF' : '#F5B041'};
+
 //App Principal
 const App = () => {
   const fields = ['Email', 'Nom'];
-
   const [estil, setEstil] = useState('florida');
-  const estilSeleccionat = estil === 'florida' ? styles.florida : styles.upv;
-  const colorSeleccionat = estil === 'florida' ? '#FFFFFF' : '#F5B041';
 
   return (
     <PaperProvider>
       {nom("Gabriel Carmona")}
-      {dades(fields, estilSeleccionat,colorSeleccionat)}
+      {dades(fields, estilSeleccionat(estil),colorSeleccionat(estil))}
     </PaperProvider>
   );
 };
