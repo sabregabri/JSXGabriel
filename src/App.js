@@ -1,13 +1,24 @@
 import React, { useState} from 'react';
-import { StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet , View} from 'react-native';
 import { PaperProvider, Text, TextInput, Button } from 'react-native-paper';
 
 const estils = {
   text: {
-    color: 'red',
+    color: 'blue',
     fontSize: 25,
   },
 };
+
+const moduls2Dam = [
+  { nom: 'DIN', professor: 'Manel', hores: 120 },
+  { nom: 'ADA', professor: 'Roberto', hores: 120 },
+  { nom: 'PMDM', professor: 'Paco', hores: 100 },
+  { nom: 'PSP', professor: 'Roberto', hores: 60 },
+  { nom: 'SGE', professor: 'Belén', hores: 100 },
+  { nom: 'Anglés', professor: 'Caterina', hores: 40 },
+  { nom: 'EIE', professor: 'Ana', hores: 60 },
+  ];
+  
 
 const isAdmin = true; //Administrador
 
@@ -15,13 +26,31 @@ const AdminButton = () => { //Boto Admin
   return (
     <Button
       icon="format-list-bulleted"
-      buttonColor='lime'
+      buttonColor='blue'
+      textColor='white'
       onPress={() => {
       }}
       style={styles.button}
     >
       <Text style={styles.buttonText}>INFORMES</Text>
     </Button>
+  );
+};
+
+const ModuleInfo = () => {
+  return (
+  <ScrollView>
+    <View>
+      {moduls2Dam.map((modul, index) => {
+        const displayText = (index + 1) + '\n' + modul.nom + '\n' + modul.professor + '\n' + modul.hores+ ' hores';
+        return (
+          <Text key={index} style={[styles.modulText, { backgroundColor: index % 2 === 0 ? '#F48FB1' : '#F8BBD0' }]}>
+            {displayText}
+          </Text>
+        );
+      })}
+    </View>
+  </ScrollView>
   );
 };
 
@@ -61,6 +90,7 @@ const App = () => {
       {nom("Gabriel Carmona")}
       {dades(fields, estilSeleccionat(estil),colorSeleccionat(estil))}
       {isAdmin && AdminButton()}
+      {<ModuleInfo></ModuleInfo>}
     </PaperProvider>
   );
 };
@@ -89,6 +119,11 @@ const styles = StyleSheet.create({
     },
     buttonText: {
       marginLeft: 15,
+      color: 'white',
+    },
+    modulText: {
+      fontSize: 16,
+      padding: 10,
     },
 });
 
