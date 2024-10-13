@@ -10,14 +10,15 @@ const estils = {
 };
 
 
-const dades = (fieldsArray, estil) => {
+const dades = (fieldsArray, estil, colorText) => {
 
   return (
     fieldsArray.map((field, index) => (
       <TextInput
         key={index}
-        label={field}
+        placeholder={field}
         style={estil}
+        placeholderTextColor={colorText}
         value=""
         onChangeText={() => {}}
       />
@@ -37,11 +38,12 @@ const App = () => {
 
   const [estil, setEstil] = useState('florida');
   const estilSeleccionat = estil === 'florida' ? styles.florida : styles.upv;
+  const colorSeleccionat = estil === 'florida' ? '#FFFFFF' : '#F5B041';
 
   return (
     <PaperProvider>
       {nom("Gabriel Carmona")}
-      {dades(fields, estilSeleccionat)}
+      {dades(fields, estilSeleccionat,colorSeleccionat)}
     </PaperProvider>
   );
 };
@@ -55,7 +57,6 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingLeft: 12,
     textAlign: 'left',
-    color: 'grey',
     },
     florida: {
     backgroundColor: 'red',
